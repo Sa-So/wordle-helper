@@ -1,5 +1,7 @@
 # wordle-helper
-A cli tool , which shows you all the next possible words you can guess from 
+A cli tool , which shows you all the next possible words you can guess from the Game Wordle.
+This repo has the code discussed in the [YouTube Video](https://youtu.be/KttiWudj0pU) 
+(if you want to watch me code it live / understand the code better )
 
 # How to use ?
 
