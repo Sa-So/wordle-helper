@@ -19,19 +19,70 @@ def presentAt(word):
 def presentButNotAt(word):
     # print(present_but_not_at)
     # every pair in present_but_not_at must be present in word but not at that location 
+    # for rule in present_but_not_at:
+    #     if(rule[0] not in word or rule[1] in word):
+    #         return False
 
-    flag = True
+    # flag = True
+    # for i,j in present_but_not_at:
+    #     flag = False # there is a rule !
+    #     for k in range(len(word)):
+    #         if(word[k]==i):
+    #             if(k!=j):
+    #                 flag = True
+    #                 break
+    #             else:
+    #                 flag = False
+    #                 break
+    # return flag
+    '''debugged something below'''
+    # print(present_but_not_at)
+
+    # now the problem is if there are 2 rules which say that a letter is present 
+    # but not at that location
+    # like a is present but not at location 0 
+    # and another rule says that a is present but not at location 1
+    # then we cannot say that a is present at location 0 and 1
+    # so we need to check if there are any rules which say that a is present at location 0 and 1
+    
+    #we need a list as 2nd argument ? 
+
+    # adding rules 2 rules same letter 'a' 
+    # abade
+    # 'a' not at 2 our code will return true
+    # 'a' not at 0 our code will return true
+    #  abcde string satisfies the rules a is not present at 2 
+    #  cbade string satisfies the rules a is not present at 0
+    # this is not a bug : we are checking if every rule  is satisfied
+    
+    # 2 rules with yellow
+
+    # prev rules that have been implemented , new word list should be gen .
+    # then only new rules added should be checked
+    # no need to check for prev rules
+    # no need to check on all 13k words
+
+    # 'l'
+
+
+    present_flag = True
+    not_at = True
+
     for i,j in present_but_not_at:
-        flag = False # there is a rule !
-        for k in range(len(word)):
-            if(word[k]==i):
-                if(k!=j):
-                    flag = True
-                    break
-                else:
-                    flag = False
-                    break
-    return flag
+        if(i in word):
+            # print(i,word)
+            present_flag = True
+            if(word[j]!=i):
+                not_at = True
+            else:
+                not_at = False
+                break;
+        else:
+            present_flag = False
+            break;
+
+    return (present_flag and not_at)
+    '''awesome'''
 
 def notPresent(word):
     # print(not_present)
@@ -50,13 +101,13 @@ def followRules(word):
 
 
 def printList():
-    print("hey")
-    pl=0
+    # print("hey")
+    ct=0
     for word in words:
         # print(pl,end="")
         if(followRules(word)):
-            print(word)
-        pl+=1
+            print(word);ct+=1
+    print(ct)
 
         # print(i)
 def fillList(word,colorString):
@@ -73,8 +124,17 @@ for i in range(5):
     inp = input("Enter the word string ")
     colorString = input("Enter the color string ")
     fillList(inp,colorString)
-    print(not_present)
+    print(present_at,not_present,present_but_not_at)
     printList()
+'''debug statements below'''
+# fillList("adieu","bbbbb")
+# fillList("snort","bbyyg")
+# listi = ["croft", "crypt" , "grypt" ,"wroot"] # wrong displayed !!!!
+# for i in listi:
+#     print(presentButNotAt(i))
+'''debug statements above'''
+
+
 # fillList("gggag","bbbyb")
 # print(presentAt("abaca"))
 # printList()
@@ -109,3 +169,4 @@ for i in range(5):
 # 2. try to find the words that are present at all the locations but not at the same location
 # 3. try to find the words that are not present in the word
 # 4. try to find the words that are present at all the locations but not at the same location and not present in the word
+
